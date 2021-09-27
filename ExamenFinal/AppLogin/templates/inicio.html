@@ -1,0 +1,45 @@
+{% extends 'base.html' %} 
+{% block title %} 
+Login-Registro 
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="login-container">
+        <div class="register">
+            <h2>Registrarse</h2>
+            <form action="{% url 'registro'%}" method="POST">
+                {% csrf_token %}
+                <input type="text" name="username" placeholder="Nombre Usuario" id="username" class="username">
+                <input type="text" name="nombre" placeholder="Nombre" id="nombre" class="nombre">
+                <input type="email" name="email" placeholder="Email" id="email" class="correo">
+                <input type="password" name="password" placeholder="Password" id="password" class="pass">
+                <input type="password" name="repassword" placeholder="Password" id="repassword" class="repass">
+                <input type="submit" value="Registrarse" class="submit">
+            </form>
+        </div>
+        <div class="login">
+            <h2>Iniciar Sesion</h2>
+            <div class="logcontainer">   
+                <form action="{% url 'login'%}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="lusername" id="lusername" placeholder="Username">
+                    <input type="password" name="lpassword" id="lpassword" placeholder="Password">
+                    <input type="submit" value="Iniciar Sesion" class="submit">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block script %}
+<script>
+{% if messages %}
+    {% for msg in messages %}
+        swal('{{msg}}');
+    {% endfor %}
+{% endif %}
+</script>
+{% endblock  %}
