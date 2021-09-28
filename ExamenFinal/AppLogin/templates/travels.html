@@ -1,0 +1,63 @@
+{% extends 'base.html' %} 
+{% block content %} 
+{% include "navbar.html" %}
+<h3>Hola - {{request.session.user_name}}</h3>
+<br><br>
+
+<div class="container-fluid">
+
+    <div class="col-8">
+        <h2>Your Trip Schedules</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Destination</th>
+                    <th>Travel Start Date</th>
+                    <th>Travel End Date</th>
+                    <th>Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for viaje in viajes2 %}
+                <tr>
+                    <td><a href="/destino/{{viaje.id}}">{{viaje.destino}}</a></td>
+                    <td>{{viaje.fechain}}</td>
+                    <td>{{viaje.fechafn}}</td>
+                    <td>{{viaje.descripcion}}</td>
+                </tr> 
+            {% endfor %}                  
+            </tbody>
+        </table>
+    </div>
+
+    <br><br><br>
+    <div class="col-8">
+        <h2>Other User's Travels Plan</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Destination</th>
+                    <th>Travel Start Date</th>
+                    <th>Travel End Date</th>
+                    <th>Do You Want to Join?</th>
+                </tr>
+            </thead>
+            <tbody>
+        
+               {% for viaje in viajes %}
+                <tr>
+                    <td>{{viaje.travels}}</td>
+                    <td><a href="/destino/{{viaje.id}}">{{viaje.destino}}</a></td>
+                    <td>{{viaje.fechain}}</td>
+                    <td>{{viaje.fechafn}}</td>
+                    <td><a href="{% url 'unirse'%}">Join</a><td>
+                </tr> 
+            {% endfor %}  
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <a href="/travels/agregar">Add Travel Plan</a>
+    </div> 
+    {% endblock %}

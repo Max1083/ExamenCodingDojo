@@ -1,0 +1,27 @@
+{% extends 'base.html' %} {% include 'navbar.html' %} {% block content%}
+
+<div class="col-10">
+   
+        <h3>{{destino1.destino}}</h3>
+        <br>
+        
+            <p>Planned By: {{destino1.user.nombre}}</p>
+            <p>Description: {{destino1.descripcion}}</p>
+            <p>Travel Date From: {{destino1.fechain}}</p>
+            <p>Travel Date To: {{destino1.fechafn}}</p>
+    
+   
+
+</div>
+
+<div class="col-10">
+   
+        <h3>Other users's joining the trip:  </h3>
+        <br>
+        
+            <p>Planned By: {{destino1.user.nombre}}</p>
+            
+   
+    
+</div>
+{% endblock %}

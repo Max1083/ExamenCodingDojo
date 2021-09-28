@@ -62,3 +62,13 @@ class User(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
+    
+    
+class Travels(models.Model):
+    id= models.AutoField(primary_key=True)
+    user=models.ManyToManyField(User,related_name="travels")
+    destino=models.CharField(max_length=100)
+    descripcion=models.CharField(max_length=255)
+    fechain=models.DateField()
+    fechafn=models.DateField()
+    
